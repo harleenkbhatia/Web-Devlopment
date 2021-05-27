@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas POC-1</title>
+    <style>
+        body {
+            margin : 0;
+        }
+        canvas {
+            display : block;
+            width : 100vw;
+            height : 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas>
+        <!-- block level tag -->
+
+    </canvas>
+</body>
+<script>
+    let canvas = document.querySelector("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let ctx = canvas.getContext("2d"); //used to draw 2d
+    //ctx.strokeRect(10, 30, 500, 500); //x,y,width, height
+    ctx.beginPath();
+    ctx.strokeRect(30, 30, 30, 30);
+    ctx.strokeRect(80, 30, 30, 30);
+    ctx.strokeRect(130, 30, 30, 30);
+    ctx.strokeRect(180, 30, 30, 30);
+
+    ctx.beginPath();
+    ctx.moveTo(30, 30);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 2;
+    ctx.lineTo(60, 60);
+    ctx.moveTo(60, 30);
+    ctx.lineTo(30, 60);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(80, 45);
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 2;
+    ctx.lineTo(90, 60);
+    ctx.moveTo(90, 60);
+    ctx.lineTo(110, 30);
+    ctx.stroke();
+    ctx.fillText("Yes", 136, 49);
+    ctx.fillText("No", 187, 49);
+
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.arc(240, 45, 10, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = "blue";
+    ctx.arc(240, 45, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.arc(270, 45, 10, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    // ctx.beginPath();
+    // ctx.moveTo(50, 50);
+    // ctx.strokeStyle = "blue";
+    // ctx.lineWidth = 5;
+    // ctx.lineTo(150, 50);
+    // ctx.stroke();
+
+    // ctx.beginPath();
+    // ctx.moveTo(50, 100);
+    // ctx.strokeStyle = "red";
+    // ctx.lineWidth = 8;
+    // ctx.lineTo(150, 100);
+    // ctx.stroke();
+</script>
+</html>
