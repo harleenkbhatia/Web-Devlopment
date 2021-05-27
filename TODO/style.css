@@ -1,0 +1,54 @@
+body {
+    margin: 0
+}
+
+* {
+    box-sizing: border-box;
+}
+.container {
+    background-color: pink;
+    color: black;
+}
+
+.container,
+.input-container,
+.task-container {
+    border: 1px solid;
+}
+
+
+.input-container {
+    height: 20vh;
+    text-align: center;
+    padding-top: 33px;
+}
+
+.task-container {
+    height: 80vh;
+}
+.task-list{
+    padding-left: 0%;
+}
+
+.task-input {
+    text-align: center;
+    font-size: 1.5rem;
+    height: 4rem;
+    width: 30%;
+    /* margin-top: 30px;*/
+}
+
+.task-container li {
+    font-size: 1.5rem;
+    /* list-style: none; */
+    background-color: white;
+    width: 40%;
+    text-align: center;
+    margin : 10px auto 0px auto;  /*top right bottom left */
+}
+@media screen and (max-width: 768px){
+    .task-input,
+    .task-container li{
+        width: 70%;
+    }
+}
