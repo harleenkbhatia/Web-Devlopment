@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas POC-2</title>
+    <style>
+        body {
+            margin : 0;
+        }
+        canvas {
+            display : block;
+            width : 100vw;
+            height : 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+<script>
+    
+    let canvas = document.querySelector("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let ctx = canvas.getContext("2d"); //used to draw 2d
+
+    let img = document.createElement("img");
+    img.src = "./temp.jpg";
+    img.onload = function() { //jb image load hojaye tb ye chla dena event listener h
+        ctx.drawImage(img, 10, 10);//img,x,y //this is drawing the image not copy paste
+    }
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Open Board</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button type="button" id="pen">Pen</button>
+        <button type="button" id="rectangle">Rectangle</button>
+    </div>
+    <canvas></canvas>
+</body>
+<script>
+    
+    let canvas = document.querySelector("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    let ctx = canvas.getContext("2d"); //used to draw 2d
+
+    function draw() {
+        let moveToNoted = false;
+        canvas.addEventListener("mousemove", function (e) {
+            if (e.buttons == 1) {
+                if (!moveToNoted) {
+                    ctx.beginPath();
+                    ctx.moveTo(e.pageX, e.pageY);
+                    ctx.strokeStyle = "blue";
+                    ctx.lineWidth = 5;
+                    moveToNoted = true;
+                }
+                else {
+                    ctx.lineTo(e.pageX, e.pageY);
+                    ctx.stroke();
+                }
+            } else {
+                moveToNoted = false;
+            }
+        });
+    }
+
+    //same with rectangle
+    function drawRectangle() {
+        let startPoint;
+        canvas.addEventListener("mousemove", function (e) {
+            if (e.buttons == 1) {
+                if (startPoint) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "blue";
+                    ctx.lineWidth = 5;
+                    let width = e.pageX - startPoint[0];
+                    let height = e.pageY - startPoint[1];
+                    ctx.clearRect(startPoint[0]-1, startPoint[1]-1, width, height);//jha pehle the
+                    ctx.strokeRect(startPoint[0], startPoint[1], width, height); // jha abi  h
+                    
+                }
+                else {
+                    startPoint = [e.pageX, e.pageY];
+                }
+            } else {
+                startPoint = undefined;
+            }
+        });
+    }
+    $("#pen").click(draw());
+    $("#rectangle").click(drawRectangle());
+
+</script>
+
+</html>
